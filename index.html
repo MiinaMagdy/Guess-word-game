@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>word guessing game</title>
+        <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <div id="border-box">
+            <div id="start-game">
+                <input id="start-btn" type="button" value="Start Game" onclick="startGame()">
+            </div>
+            <div id="in-game">
+                <h1>Guess The Word</h1>
+                <div id="letters"></div>
+                <p>Hint: <span id="hint"></span></p>
+                <p>Remaining guesses: <span id="remain"></span></p>
+                <p>Wrong letters: <span id="wrong"></span></p>
+                <input id="reset-btn" type="button" value="Reset Game" onclick="buildGame()">
+            </div>
+        </div>
+    </body>
+</html>
