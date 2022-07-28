@@ -43,28 +43,50 @@ document.addEventListener('keydown', (event) => {
     let isInGame = document.getElementById("in-game").style.display == "block";
     let rem = document.getElementById("remain");
     let wrong = document.getElementById("wrong");
-    if (cnt < word.length && isInGame) {
-        if (isAlpha(character)) {
-            character = character.toUpperCase();
-            console.log(character);
-            let idx = word.indexOf(character);
-            if (idx != -1) {
-                while (marked.indexOf(idx) != -1) {
-                    idx = word.indexOf(character, idx + 1);
+    if (isInGame) {
+        if (cnt < word.length) {
+            if (isAlpha(character)) {
+                character = character.toUpperCase();
+                console.log(character);
+                let idx = word.indexOf(character);
+                if (idx != -1) {
+                    while (marked.indexOf(idx) != -1) {
+                        idx = word.indexOf(character, idx + 1);
+                    }
+                    marked.push(idx);
+                    lettersInput[idx].value = character;
+                    cnt++;
                 }
-                marked.push(idx);
-                lettersInput[idx].value = character;
-                cnt++;
-            }
-            else {
-                if (parseInt(rem.innerHTML) < word.length) wrong.innerHTML = wrong.innerHTML + ", ";
-                wrong.innerHTML = wrong.innerHTML + character;
-                rem.innerHTML = -1 + parseInt(rem.innerHTML);
-                if (rem.innerHTML == "0") {
-                    document.getElementById("in-game").style.display = "none";
-                    document.getElementById("start-game").style.display = "block";
+                else {
+                    if (parseInt(rem.innerHTML) < word.length) wrong.innerHTML = wrong.innerHTML + ", ";
+                    wrong.innerHTML = wrong.innerHTML + character;
+                    rem.innerHTML = -1 + parseInt(rem.innerHTML);
+                    if (rem.innerHTML == "0") {
+                        setTimeout(() => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'You lost!',
+                                // footer: '<a href="">Why do I have this issue?</a>'
+                            }).then(() => {
+                                document.getElementById("in-game").style.display = "none";
+                                document.getElementById("start-game").style.display = "block";
+                            })
+                        });
+                    }
                 }
             }
+        }
+        if (cnt == word.length) {
+            setTimeout(() => {
+                Swal.fire(
+                    'Good job!',
+                    'You win!',
+                    'success'
+                ).then(() => {
+                    buildGame();
+                });
+            });
         }
     }
 });
