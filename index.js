@@ -1,12 +1,39 @@
 game_words = [
     ["guitar", "a musical instrument"],
+    ["piano", "a musical instrument"],
+    ["violin", "a musical instrument"],
+    ["drum", "a musical instrument"],
+    ["flute", "a musical instrument"],
     ["pen", "a writing tool"],
+    ["pencil", "a writing tool"],
+    ["ruler", "a writing tool"],
+    ["marker", "a writing tool"],
     ["mouse", "an input device"],
-    ["sweatshirt", "a cloth"]
+    ["keyboard", "an input device"],
+    ["monitor", "an output device"],
+    ["hat", "a headgear"],
+    ["shoes", "footwear"],
+    ["socks", "footwear"],
+    ["jacket", "a cloth"],
+    ["sweatshirt", "a cloth"],
+    ["skirt", "a cloth"],
+    ["dress", "a cloth"],
+    ["pants", "cloth"],
+    ["apple", "a fruit"],
+    ["banana", "a fruit"],
+    ["orange", "a fruit"],
+    ["pear", "a fruit"],
+    ["cat", "a animal"],
+    ["dog", "a animal"],
+    ["bird", "a animal"],
+    ["fish", "a animal"],
+    ["horse", "a animal"],
+    ["cow", "a animal"],
 ];
 
 var word_index;
 var lettersInput = [];
+var scoreCnt;
 
 function buildGame() {
     cnt = 0;
@@ -88,6 +115,7 @@ document.addEventListener('keydown', (event) => {
                     'You win!',
                     'success'
                 ).then(() => {
+                    scoreCnt.innerText = parseInt(scoreCnt.innerText) + 1;
                     buildGame();
                 });
             });
@@ -98,5 +126,7 @@ document.addEventListener('keydown', (event) => {
 function startGame() {
     document.getElementById("start-game").style.display = "none";
     document.getElementById("in-game").style.display = "block";
+    scoreCnt = document.getElementById("score-cnt");
+    scoreCnt.innerText = 0;
     buildGame();
 }
