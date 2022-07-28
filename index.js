@@ -31,6 +31,7 @@ function buildGame() {
     }
     document.getElementById("remain").innerHTML = word.length;
     document.getElementById("hint").innerHTML = hint;
+    document.getElementById("wrong").innerHTML = "";
 }
 
 function isAlpha(c) {
