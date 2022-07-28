@@ -46,6 +46,7 @@ document.addEventListener('keydown', (event) => {
     if (isInGame) {
         if (cnt < word.length) {
             if (isAlpha(character)) {
+                document.getElementById("swithc-lang").style.display = "none";
                 character = character.toUpperCase();
                 console.log(character);
                 let idx = word.indexOf(character);
@@ -75,6 +76,9 @@ document.addEventListener('keydown', (event) => {
                         });
                     }
                 }
+            }
+            else if (character.length == 1 && 'ا' <= character && character <= 'ي') {
+                document.getElementById("swithc-lang").style.display = "inline";
             }
         }
         if (cnt == word.length) {
