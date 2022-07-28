@@ -50,10 +50,10 @@ document.addEventListener('keydown', (event) => {
                 character = character.toUpperCase();
                 console.log(character);
                 let idx = word.indexOf(character);
+                while (marked.indexOf(idx) != -1) {
+                    idx = word.indexOf(character, idx + 1);
+                }
                 if (idx != -1) {
-                    while (marked.indexOf(idx) != -1) {
-                        idx = word.indexOf(character, idx + 1);
-                    }
                     marked.push(idx);
                     lettersInput[idx].value = character;
                     cnt++;
