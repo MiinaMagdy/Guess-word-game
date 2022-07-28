@@ -3,13 +3,14 @@
     <head>
         <title>word guessing game</title>
         <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
-        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="index.js"></script>
     </head>
     <body>
         <div id="border-box">
             <div id="start-game">
-                <input id="start-btn" type="button" value="Start Game" onclick="startGame()">
+                <button id="start-btn" onclick="startGame()">Start Game</button>
             </div>
             <div id="in-game">
                 <h1>Guess The Word</h1>
@@ -17,7 +18,7 @@
                 <p>Hint: <span id="hint"></span></p>
                 <p>Remaining guesses: <span id="remain"></span></p>
                 <p>Wrong letters: <span id="wrong"></span></p>
-                <input id="reset-btn" type="button" value="Reset Game" onclick="buildGame()">
+                <button id="reset-btn" onclick="buildGame()">Reset Game</button>
             </div>
         </div>
     </body>
